@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
 
-	<!--<PropertyGroup>
-		<RepositoryUrl>TODO</RepositoryUrl>
-		<PackageLicenseUrl>TODO</PackageLicenseUrl>
-		<PackageProjectUrl>TODO</PackageProjectUrl>
-	</PropertyGroup>-->
-
 	<PropertyGroup>
 		<Authors>Deinok</Authors>
+		<Description>A GraphQL Integration for AspNetCore</Description>
 		<GenerateAssemblyInfo>True</GenerateAssemblyInfo>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 		<LangVersion>Latest</LangVersion>
-		<NeutralLanguage>en</NeutralLanguage>
-		<NoWarn>CS1591</NoWarn>
+		<NeutralLanguage>en-US</NeutralLanguage>
+		<NoWarn></NoWarn>
+		<PackageIconUrl>https://raw.githubusercontent.com/deinok/graphql-server-aspnetcore/master/assets/logo.64x64.png</PackageIconUrl>
+		<PackageLicenseUrl>https://raw.githubusercontent.com/deinok/graphql-server-aspnetcore/master/LICENSE.txt</PackageLicenseUrl>
+		<PackageProjectUrl>https://github.com/deinok/graphql-server-aspnetcore</PackageProjectUrl>
 		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+		<PackageTags>GraphQL;Server;AspNetCore</PackageTags>
 		<RepositoryType>git</RepositoryType>
+		<RepositoryUrl>https://github.com/deinok/graphql-server-aspnetcore.git</RepositoryUrl>
 		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
 		<Version>1.0.0-alpha1</Version>
 		<WarningLevel>4</WarningLevel>
