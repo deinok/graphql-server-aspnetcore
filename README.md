@@ -1,1 +1,1 @@
-# graphql-server-aspnetcore
+# GraphQL.Server.AspNetCore:
