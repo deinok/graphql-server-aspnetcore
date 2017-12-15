@@ -3,11 +3,10 @@
 
 	<PropertyGroup>
 		<TargetFrameworks>netstandard1.1;netstandard2.0</TargetFrameworks>
-		<PackageTargetFallback>dnxcore50</PackageTargetFallback>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="GraphQL" Version="0.17.3" />
+		<PackageReference Include="GraphQL" Version="2.0.0-alpha-817" />
 	</ItemGroup>
 
 </Project>
