@@ -8,7 +8,7 @@
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 		<LangVersion>Latest</LangVersion>
 		<NeutralLanguage>en-US</NeutralLanguage>
-		<NoWarn></NoWarn>
+		<NoWarn>CS1591</NoWarn>
 		<PackageIconUrl>https://raw.githubusercontent.com/deinok/graphql-server-aspnetcore/master/assets/logo.64x64.png</PackageIconUrl>
 		<PackageLicenseUrl>https://raw.githubusercontent.com/deinok/graphql-server-aspnetcore/master/LICENSE.txt</PackageLicenseUrl>
 		<PackageProjectUrl>https://github.com/deinok/graphql-server-aspnetcore</PackageProjectUrl>
