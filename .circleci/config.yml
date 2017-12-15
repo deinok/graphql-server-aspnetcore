@@ -1,0 +1,58 @@
+version: 2
+jobs:
+  netcore1.0:
+    working_directory: ~/GraphQL.Server.AspNetCore/
+    docker:
+      - image: microsoft/dotnet:1-sdk
+    steps:
+      - checkout
+
+      # Test
+      - run: dotnet restore
+      #- run: dotnet test --framework netcoreapp1.0 ./tests/GraphQL.Server.AspNetCore.Tests/GraphQL.Server.AspNetCore.Tests.csproj
+
+  netcore2.0:
+    working_directory: ~/GraphQL.Server.AspNetCore/
+    docker:
+      - image: microsoft/dotnet:2-sdk
+    steps:
+      - checkout
+
+      # Test
+      #- run: dotnet test --framework netcoreapp2.0 ./tests/GraphQL.Server.AspNetCore.Tests/GraphQL.Server.AspNetCore.Tests.csproj
+
+  deploy:
+    working_directory: ~/GraphQL.Server.AspNetCore/
+    docker:
+      - image: microsoft/dotnet:2-sdk
+    environment:
+      MY_GET_SOURCE: https://www.myget.org/F/graphql-dotnet/api/v3/index.json
+    steps:
+      - checkout
+
+      # Pack
+      - run: dotnet build --configuration Release ./src/GraphQL.Server.AspNetCore/GraphQL.Server.AspNetCore.csproj
+      - run: dotnet pack --configuration Release ./src/GraphQL.Server.AspNetCore/GraphQL.Server.AspNetCore.csproj
+
+      # Store Artifacts
+      - store_artifacts:
+          path: ./src/GraphQL.Server.AspNetCore/bin/Release/GraphQL.Server.AspNetCore.1.0.0-alpha1.nupkg
+
+      # Deploy
+      - deploy:
+          name: MyGet
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              dotnet nuget push ./src/GraphQL.Server.AspNetCore/bin/Release/GraphQL.Server.AspNetCore.1.0.0-beta2.nupkg --api-key $MY_GET_API_KEY --source $MY_GET_SOURCE
+            fi
+
+workflows:
+  version: 2
+  build-test-and-deploy:
+    jobs:
+      - netcore1.0
+      - netcore2.0
+      - deploy:
+          requires:
+            - netcore1.0
+            - netcore2.0
