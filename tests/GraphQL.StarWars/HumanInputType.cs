@@ -1,6 +1,6 @@
 using GraphQL.Types;
 
-namespace TestingWebApp.GraphQL {
+namespace GraphQL.StarWars {
 
 	public class HumanInputType : InputObjectGraphType {
 

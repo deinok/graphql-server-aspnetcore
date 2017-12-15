@@ -1,4 +1,4 @@
-namespace TestingWebApp.GraphQL.Types {
+namespace GraphQL.StarWars.Types {
 
 	public abstract class StarWarsCharacter {
 		public string Id { get; set; }

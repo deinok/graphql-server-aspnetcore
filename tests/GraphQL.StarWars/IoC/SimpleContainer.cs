@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace TestingWebApp.GraphQL.IoC {
+namespace GraphQL.StarWars.IoC {
 
 	public interface ISimpleContainer : IDisposable {
 		object Get(Type serviceType);

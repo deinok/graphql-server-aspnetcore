@@ -1,8 +1,8 @@
 using System;
+using GraphQL.StarWars.Types;
 using GraphQL.Types;
-using TestingWebApp.GraphQL.Types;
 
-namespace TestingWebApp.GraphQL {
+namespace GraphQL.StarWars {
 
 	public class StarWarsQuery : ObjectGraphType<object> {
 

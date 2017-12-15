@@ -2,10 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using GraphQL;
-using TestingWebApp.GraphQL.Types;
+using GraphQL.StarWars.Types;
 
-namespace TestingWebApp.GraphQL {
+namespace GraphQL.StarWars {
 
 	public class StarWarsData {
 

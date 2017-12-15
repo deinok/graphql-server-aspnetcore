@@ -37,6 +37,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".circleci", ".circleci", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestingWebApp", "tests\TestingWebApp\TestingWebApp.csproj", "{0857EC3C-6573-4E5E-A7EF-5AA7F51B6F4C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphQL.StarWars", "tests\GraphQL.StarWars\GraphQL.StarWars.csproj", "{6FE2A510-034F-4751-9F93-8AD468D0C7C5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{0857EC3C-6573-4E5E-A7EF-5AA7F51B6F4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0857EC3C-6573-4E5E-A7EF-5AA7F51B6F4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0857EC3C-6573-4E5E-A7EF-5AA7F51B6F4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FE2A510-034F-4751-9F93-8AD468D0C7C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FE2A510-034F-4751-9F93-8AD468D0C7C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FE2A510-034F-4751-9F93-8AD468D0C7C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FE2A510-034F-4751-9F93-8AD468D0C7C5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +66,7 @@ Global
 		{73E6873F-2952-4731-A429-E04E61348F10} = {17C9EE66-B846-4C98-82A8-7793657A5DA4}
 		{28319136-AE75-41F0-AFB8-9B3FDC7E2866} = {17C9EE66-B846-4C98-82A8-7793657A5DA4}
 		{0857EC3C-6573-4E5E-A7EF-5AA7F51B6F4C} = {EBE3315F-43FA-44AC-8E88-0202012E3233}
+		{6FE2A510-034F-4751-9F93-8AD468D0C7C5} = {EBE3315F-43FA-44AC-8E88-0202012E3233}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E6127A1D-8FF2-4CF4-B874-FC02DD0D2276}

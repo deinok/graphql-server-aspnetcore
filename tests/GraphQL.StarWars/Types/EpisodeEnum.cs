@@ -1,6 +1,6 @@
 using GraphQL.Types;
 
-namespace TestingWebApp.GraphQL.Types {
+namespace GraphQL.StarWars.Types {
 
 	public class EpisodeEnum : EnumerationGraphType {
 
