@@ -17,7 +17,7 @@ namespace GraphQL.Server.AspNetCore {
 		/// </summary>
 		public PathString EndPoint { get; set; } = "/api/graphql";
 
-		public Func<HttpContext, ClaimsPrincipal> BuildUserContext { get; set; }
+		public Func<HttpContext, ClaimsPrincipal> BuildUserContext { get; set; } = context => context.User;
 
 		/// <summary>
 		/// The Schema of the GraphQL
