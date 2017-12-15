@@ -9,11 +9,20 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 		LICENSE.txt = LICENSE.txt
 		README.md = README.md
+		root.props = root.props
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphQL.Server.AspNetCore", "src\GraphQL.Server.AspNetCore\GraphQL.Server.AspNetCore.csproj", "{BE8E55AC-5E3B-47C3-B407-6013ECBCB569}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{81634A80-4363-49DB-B82B-30D00A07A7E8}"
+	ProjectSection(SolutionItems) = preProject
+		src\src.props = src\src.props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{EBE3315F-43FA-44AC-8E88-0202012E3233}"
+	ProjectSection(SolutionItems) = preProject
+		tests\tests.props = tests\tests.props
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
