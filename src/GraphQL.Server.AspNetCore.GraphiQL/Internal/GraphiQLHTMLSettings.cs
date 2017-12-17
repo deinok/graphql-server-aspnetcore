@@ -17,7 +17,11 @@ namespace GraphQL.Server.AspNetCore.GraphiQL.Internal {
 				graphiQLCSHtml= new StreamReader(resource).ReadToEnd();
 				return HTML;
 			}
+			set {
+				graphiQLCSHtml = value;
+			}
 		}
+
 	}
 
 }
