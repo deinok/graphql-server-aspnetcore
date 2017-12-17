@@ -36,7 +36,7 @@ namespace GraphQL.Server.AspNetCore.GraphiQL {
 
 			// TODO: use RazorPageGenerator when ASP.NET Core 1.1 is out...?
 			var builder = new StringBuilder(GraphiQLHTMLSettings.HTML);
-			builder.Replace("/graphql", this.settings.GraphQLPath);
+			builder.Replace("@Model.GraphQLPath", this.settings.GraphQLPath);
 
 			var data = Encoding.UTF8.GetBytes(builder.ToString());
 			await httpResponse.Body.WriteAsync(data, 0, data.Length).ConfigureAwait(false);
