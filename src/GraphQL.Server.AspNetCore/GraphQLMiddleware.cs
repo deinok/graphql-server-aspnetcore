@@ -102,7 +102,7 @@ namespace GraphQL.Server.AspNetCore {
 
 	}
 
-	public static class GraphQLServiceExtensions {
+	internal static class GraphQLServiceExtensions {
 
 		public static Inputs ToInputs(this JToken obj) {
 			var variables = obj.GetValue() as Dictionary<string, object> ?? new Dictionary<string, object>();
