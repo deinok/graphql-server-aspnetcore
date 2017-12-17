@@ -52,7 +52,7 @@ workflows:
     jobs:
       - netcore1.0
       - netcore2.0
-      - deploy:
-          requires:
-            - netcore1.0
-            - netcore2.0
+      #- deploy:
+      #    requires:
+      #      - netcore1.0
+      #      - netcore2.0
