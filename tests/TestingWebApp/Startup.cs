@@ -1,6 +1,6 @@
 using GraphQL;
-using GraphQL.Http;
 using GraphQL.Server.AspNetCore;
+using GraphQL.Server.AspNetCore.GraphiQL;
 using GraphQL.StarWars;
 using GraphQL.StarWars.Types;
 using GraphQL.Types;
@@ -36,6 +36,7 @@ namespace TestingWebApp {
 			app.UseGraphQLServer(new GraphQLMiddlewareSettings {
 				Schema = app.ApplicationServices.GetRequiredService<ISchema>()
 			});
+			app.UseGraphiQLServer(new GraphiQLMiddlewareSettings { });
 
 			app.Run(async (context) => {
 				await context.Response.WriteAsync("Hello World!");

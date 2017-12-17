@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<Import Project="../src.props" />
+
+	<PropertyGroup>
+		<TargetFrameworks>netstandard1.3;netstandard2.0</TargetFrameworks>
+	</PropertyGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.3'">
+		<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="1.1.2" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+		<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.0.1" />
+	</ItemGroup>
+	
+</Project>
