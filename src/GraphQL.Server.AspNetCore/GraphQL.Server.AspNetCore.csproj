@@ -8,6 +8,14 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <None Remove="GraphiQL\Internal\graphiql.cshtml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="GraphiQL\Internal\graphiql.cshtml" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="GraphQL" Version="2.0.0-alpha-817" />
 		<PackageReference Include="GraphQL.Common" Version="1.0.0-beta3" />
 	</ItemGroup>
