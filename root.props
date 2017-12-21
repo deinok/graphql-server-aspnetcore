@@ -3,7 +3,6 @@
 
 	<PropertyGroup>
 		<Authors>Deinok</Authors>
-		<Description>A GraphQL Integration for AspNetCore</Description>
 		<GenerateAssemblyInfo>True</GenerateAssemblyInfo>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 		<LangVersion>Latest</LangVersion>
