@@ -6,14 +6,27 @@ using Microsoft.AspNetCore.Http;
 
 namespace GraphQL.Server.AspNetCore.GraphiQL {
 
+	/// <summary>
+	/// A middleware for GraphiQL
+	/// </summary>
 	public class GraphiQLMiddleware : BaseMiddleware {
 
 		private readonly GraphiQLMiddlewareSettings settings;
 
+		/// <summary>
+		/// Create a new GraphiQLMiddleware
+		/// </summary>
+		/// <param name="nextMiddleware">The Next Middleware</param>
+		/// <param name="settings">The Settings of the Middleware</param>
 		public GraphiQLMiddleware(RequestDelegate nextMiddleware, GraphiQLMiddlewareSettings settings) : base(nextMiddleware) {
 			this.settings = settings ?? throw new ArgumentNullException(nameof(settings));
 		}
 
+		/// <summary>
+		/// Try to execute the logic of the middleware
+		/// </summary>
+		/// <param name="httpContext">The HttpContext</param>
+		/// <returns></returns>
 		public async override Task Invoke(HttpContext httpContext) {
 			if (httpContext == null) { throw new ArgumentNullException(nameof(httpContext)); }
 

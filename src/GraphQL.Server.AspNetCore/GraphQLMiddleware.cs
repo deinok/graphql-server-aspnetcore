@@ -73,7 +73,8 @@ namespace GraphQL.Server.AspNetCore {
 		private async Task<GraphQLRequest> ReadRequestAsync(HttpRequest httpRequest) {
 			if (string.Equals(httpRequest.Method, HttpMethods.Get, StringComparison.OrdinalIgnoreCase)) {
 				return this.ReadGetRequest(httpRequest);
-			} else if (string.Equals(httpRequest.Method, HttpMethods.Post, StringComparison.OrdinalIgnoreCase)) {
+			}
+			else if (string.Equals(httpRequest.Method, HttpMethods.Post, StringComparison.OrdinalIgnoreCase)) {
 				return await this.ReadPostRequestAsync(httpRequest).ConfigureAwait(false);
 			}
 			throw new InvalidOperationException();

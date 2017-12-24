@@ -23,8 +23,8 @@ namespace GraphQL.Server.AspNetCore.GraphiQL.Internal {
 			var resource = assembly.GetManifestResourceStream("GraphQL.Server.AspNetCore.GraphiQL.Internal.graphiql.cshtml");
 
 			var builder = new StringBuilder(new StreamReader(resource).ReadToEnd());
-			builder.Replace("@Model.GraphQLPath", this.settings.GraphQLPath);
-			graphiQLCSHtml=builder.ToString();
+			builder.Replace("@Model.GraphQLEndPoint", this.settings.GraphQLEndPoint);
+			graphiQLCSHtml = builder.ToString();
 
 			return this.Render();
 		}
