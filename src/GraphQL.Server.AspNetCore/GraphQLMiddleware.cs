@@ -24,6 +24,8 @@ namespace GraphQL.Server.AspNetCore {
 		/// <param name="middlewareSettings">The Settings of the Middleware</param>
 		public GraphQLMiddleware(RequestDelegate nextMiddleware, GraphQLMiddlewareSettings middlewareSettings) : base(nextMiddleware) {
 			this.middlewareSettings = middlewareSettings ?? throw new ArgumentNullException(nameof(middlewareSettings));
+			if (middlewareSettings.EndPoint == null) { throw new ArgumentNullException(nameof(middlewareSettings.EndPoint)); }
+			if (middlewareSettings.Schema == null) { throw new ArgumentNullException(nameof(middlewareSettings.Schema)); }
 		}
 
 		/// <summary>
