@@ -1,6 +1,7 @@
 using GraphQL;
 using GraphQL.Server.AspNetCore;
 using GraphQL.Server.AspNetCore.GraphiQL;
+using GraphQL.Server.AspNetCore.Playground;
 using GraphQL.StarWars;
 using GraphQL.StarWars.Types;
 using GraphQL.Types;
@@ -37,6 +38,7 @@ namespace TestingWebApp {
 				Schema = app.ApplicationServices.GetRequiredService<ISchema>()
 			});
 			app.UseGraphiQLServer(new GraphiQLMiddlewareSettings { });
+			app.UsePlaygroundServer(new PlaygroundMiddlewareSettings { });
 
 			app.Run(async (context) => {
 				await context.Response.WriteAsync("Hello World!");

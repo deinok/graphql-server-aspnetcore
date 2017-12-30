@@ -35,12 +35,16 @@ jobs:
       - run: dotnet pack --configuration Release ./src/GraphQL.Server.AspNetCore/GraphQL.Server.AspNetCore.csproj
       - run: dotnet build --configuration Release ./src/GraphQL.Server.AspNetCore.GraphiQL/GraphQL.Server.AspNetCore.GraphiQL.csproj
       - run: dotnet pack --configuration Release ./src/GraphQL.Server.AspNetCore.GraphiQL/GraphQL.Server.AspNetCore.GraphiQL.csproj
+      - run: dotnet build --configuration Release ./src/GraphQL.Server.AspNetCore.Playground/GraphQL.Server.AspNetCore.Playground.csproj
+      - run: dotnet pack --configuration Release ./src/GraphQL.Server.AspNetCore.Playground/GraphQL.Server.AspNetCore.Playground.csproj
 
       # Store Artifacts
       - store_artifacts:
           path: ./src/GraphQL.Server.AspNetCore/bin/Release/GraphQL.Server.AspNetCore.1.0.0-alpha1.nupkg
       - store_artifacts:
           path: ./src/GraphQL.Server.AspNetCore.GraphiQL/bin/Release/GraphQL.Server.AspNetCore.GraphiQL.1.0.0-alpha1.nupkg
+      - store_artifacts:
+          path: ./src/GraphQL.Server.AspNetCore.Playground/bin/Release/GraphQL.Server.AspNetCore.Playground.1.0.0-alpha1.nupkg
 
       # Deploy
       - deploy:
@@ -49,6 +53,7 @@ jobs:
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               #dotnet nuget push ./src/GraphQL.Server.AspNetCore/bin/Release/GraphQL.Server.AspNetCore.1.0.0-beta2.nupkg --api-key $MY_GET_API_KEY --source $MY_GET_SOURCE
               #dotnet nuget push ./src/GraphQL.Server.AspNetCore.GraphiQL/bin/Release/GraphQL.Server.AspNetCore.GraphiQL.1.0.0-beta2.nupkg --api-key $MY_GET_API_KEY --source $MY_GET_SOURCE
+              #dotnet nuget push ./src/GraphQL.Server.AspNetCore.Playground/bin/Release/GraphQL.Server.AspNetCore.Playground.1.0.0-beta2.nupkg --api-key $MY_GET_API_KEY --source $MY_GET_SOURCE
             fi
 
 workflows:
