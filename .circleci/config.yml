@@ -45,13 +45,13 @@ jobs:
 
       # Store Artifacts
       - store_artifacts:
-          path: ./src/GraphQL.Server.AspNetCore/bin/Release/GraphQL.Server.AspNetCore.1.0.0-alpha1.nupkg
+          path: ./src/GraphQL.Server.AspNetCore/bin/Release/GraphQL.Server.AspNetCore.1.0.0-alpha2.nupkg
       - store_artifacts:
-          path: ./src/GraphQL.Server.AspNetCore.GraphiQL/bin/Release/GraphQL.Server.AspNetCore.GraphiQL.1.0.0-alpha1.nupkg
+          path: ./src/GraphQL.Server.AspNetCore.GraphiQL/bin/Release/GraphQL.Server.AspNetCore.GraphiQL.1.0.0-alpha2.nupkg
       - store_artifacts:
-          path: ./src/GraphQL.Server.AspNetCore.Playground/bin/Release/GraphQL.Server.AspNetCore.Playground.1.0.0-alpha1.nupkg
+          path: ./src/GraphQL.Server.AspNetCore.Playground/bin/Release/GraphQL.Server.AspNetCore.Playground.1.0.0-alpha2.nupkg
       - store_artifacts:
-          path: ./src/GraphQL.Server.AspNetCore.All/bin/Release/GraphQL.Server.AspNetCore.All.1.0.0-alpha1.nupkg
+          path: ./src/GraphQL.Server.AspNetCore.All/bin/Release/GraphQL.Server.AspNetCore.All.1.0.0-alpha2.nupkg
 
       # Deploy
       - deploy:
