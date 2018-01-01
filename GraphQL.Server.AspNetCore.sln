@@ -43,6 +43,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphQL.Server.AspNetCore.G
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphQL.Server.AspNetCore.Playground", "src\GraphQL.Server.AspNetCore.Playground\GraphQL.Server.AspNetCore.Playground.csproj", "{F9AE12B2-F733-4FBE-9C18-02D225B68FC1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphQL.Server.AspNetCore.All", "src\GraphQL.Server.AspNetCore.All\GraphQL.Server.AspNetCore.All.csproj", "{98BECC81-3484-435E-970C-F0B4EF63128E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,10 @@ Global
 		{F9AE12B2-F733-4FBE-9C18-02D225B68FC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9AE12B2-F733-4FBE-9C18-02D225B68FC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9AE12B2-F733-4FBE-9C18-02D225B68FC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98BECC81-3484-435E-970C-F0B4EF63128E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98BECC81-3484-435E-970C-F0B4EF63128E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98BECC81-3484-435E-970C-F0B4EF63128E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98BECC81-3484-435E-970C-F0B4EF63128E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -81,6 +87,7 @@ Global
 		{0C83937E-3BFF-4729-AF05-A99A480F5094} = {EBE3315F-43FA-44AC-8E88-0202012E3233}
 		{831EA875-99CB-4E51-90B0-E776E6DF3344} = {81634A80-4363-49DB-B82B-30D00A07A7E8}
 		{F9AE12B2-F733-4FBE-9C18-02D225B68FC1} = {81634A80-4363-49DB-B82B-30D00A07A7E8}
+		{98BECC81-3484-435E-970C-F0B4EF63128E} = {81634A80-4363-49DB-B82B-30D00A07A7E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E6127A1D-8FF2-4CF4-B874-FC02DD0D2276}
