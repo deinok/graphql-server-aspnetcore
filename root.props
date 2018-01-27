@@ -16,7 +16,7 @@
 		<RepositoryType>git</RepositoryType>
 		<RepositoryUrl>https://github.com/deinok/graphql-server-aspnetcore.git</RepositoryUrl>
 		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
-		<Version>1.0.0-alpha2</Version>
+		<Version>1.0.0-beta1</Version>
 		<WarningLevel>4</WarningLevel>
 	</PropertyGroup>
 
