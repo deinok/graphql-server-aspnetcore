@@ -16,17 +16,17 @@ namespace GraphQL.Server.AspNetCore.Playground.Internal {
 		}
 
 		public string Render() {
-			if (playgroundCSHtml != null) {
-				return playgroundCSHtml;
-			}
-			var assembly = typeof(PlaygroundPageModel).GetTypeInfo().Assembly;
-			var resource = assembly.GetManifestResourceStream("GraphQL.Server.AspNetCore.Playground.Internal.playground.cshtml");
-
-			var builder = new StringBuilder(new StreamReader(resource).ReadToEnd());
-			builder.Replace("@Model.GraphQLEndPoint", this.settings.GraphQLEndPoint);
-			playgroundCSHtml = builder.ToString();
-
-			return this.Render();
+            if (playgroundCSHtml != null) {
+                return playgroundCSHtml;
+            }
+            var assembly = typeof(PlaygroundPageModel).GetTypeInfo().Assembly;
+            using (var manifestResourceStream = assembly.GetManifestResourceStream("GraphQL.Server.AspNetCore.Playground.Internal.playground.cshtml"))
+            using (var streamReader = new StreamReader(manifestResourceStream)) {
+                var builder = new StringBuilder(streamReader.ReadToEnd());
+                builder.Replace("@Model.GraphQLEndPoint", this.settings.GraphQLEndPoint);
+                playgroundCSHtml = builder.ToString();
+                return this.Render();
+            }
 		}
 
 	}
