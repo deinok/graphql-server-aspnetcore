@@ -54,7 +54,7 @@ namespace GraphQL.Server.AspNetCore {
 
 		private async Task InvokeGraphQLApi(HttpContext httpContext) {
 			// Read the GraphQLRequest
-			var request = await this.ReadRequestAsync(httpContext.Request).ConfigureAwait(false);
+			var request = this.ReadRequest(httpContext.Request);
 
 			// Try Execute the request
 			var result = await this.middlewareSettings.Executer.ExecuteAsync(executionOptions => {
@@ -70,12 +70,12 @@ namespace GraphQL.Server.AspNetCore {
 		}
 
 
-		private async Task<GraphQLRequest> ReadRequestAsync(HttpRequest httpRequest) {
+		private GraphQLRequest ReadRequest(HttpRequest httpRequest) {
 			if (string.Equals(httpRequest.Method, HttpMethods.Get, StringComparison.OrdinalIgnoreCase)) {
 				return this.ReadGetRequest(httpRequest);
 			}
 			else if (string.Equals(httpRequest.Method, HttpMethods.Post, StringComparison.OrdinalIgnoreCase)) {
-				return await this.ReadPostRequestAsync(httpRequest).ConfigureAwait(false);
+				return this.ReadPostJsonRequest(httpRequest);
 			}
 			throw new InvalidOperationException();
 		}
@@ -88,10 +88,11 @@ namespace GraphQL.Server.AspNetCore {
 			};
 		}
 
-		private async Task<GraphQLRequest> ReadPostRequestAsync(HttpRequest httpRequest) {
-			using (var streamReader = new StreamReader(httpRequest.Body)) {
-				var body = await streamReader.ReadToEndAsync().ConfigureAwait(true);
-				return JsonConvert.DeserializeObject<GraphQLRequest>(body);
+		private GraphQLRequest ReadPostJsonRequest(HttpRequest httpRequest) {
+			using (var streamReader = new StreamReader(httpRequest.Body))
+			using (var jsonTextReader = new JsonTextReader(streamReader)) {
+				var jsonSerializer = new JsonSerializer();
+				return jsonSerializer.Deserialize<GraphQLRequest>(jsonTextReader);
 			}
 		}
 
