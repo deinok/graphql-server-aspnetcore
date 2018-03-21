@@ -1,11 +1,8 @@
 using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using GraphQL.Common.Request;
+using GraphQL.Server.AspNetCore.Internal;
 using Microsoft.AspNetCore.Http;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace GraphQL.Server.AspNetCore {
@@ -33,15 +30,14 @@ namespace GraphQL.Server.AspNetCore {
 		/// </summary>
 		/// <param name="httpContext">The HttpContext</param>
 		/// <returns></returns>
-		public async override Task Invoke(HttpContext httpContext) {
+		public override Task Invoke(HttpContext httpContext) {
 			if (httpContext == null) { throw new ArgumentNullException(nameof(httpContext)); }
 
 			if (this.IsGraphQLApiRequest(httpContext.Request)) {
-				await this.InvokeGraphQLApi(httpContext).ConfigureAwait(false);
-				return;
+				return this.InvokeGraphQLApi(httpContext);
 			}
 
-			await this.NextMiddleware(httpContext).ConfigureAwait(false);
+			return this.NextMiddleware(httpContext);
 		}
 
 		private bool IsGraphQLApiRequest(HttpRequest httpRequest) {
@@ -54,7 +50,7 @@ namespace GraphQL.Server.AspNetCore {
 
 		private async Task InvokeGraphQLApi(HttpContext httpContext) {
 			// Read the GraphQLRequest
-			var request = this.ReadRequest(httpContext.Request);
+			var request = GraphQLHttpReader.ReadRequest(httpContext.Request);
 
 			// Try Execute the request
 			var result = await this.middlewareSettings.Executer.ExecuteAsync(executionOptions => {
@@ -70,47 +66,12 @@ namespace GraphQL.Server.AspNetCore {
 		}
 
 
-		private GraphQLRequest ReadRequest(HttpRequest httpRequest) {
-			if (string.Equals(httpRequest.Method, HttpMethods.Get, StringComparison.OrdinalIgnoreCase)) {
-				return this.ReadGetRequest(httpRequest);
-			}
-			else if (string.Equals(httpRequest.Method, HttpMethods.Post, StringComparison.OrdinalIgnoreCase)) {
-				return this.ReadPostJsonRequest(httpRequest);
-			}
-			throw new InvalidOperationException();
-		}
-
-		private GraphQLRequest ReadGetRequest(HttpRequest httpRequest) {
-			return new GraphQLRequest {
-				Query = httpRequest.Query["query"],
-				OperationName = httpRequest.Query["operationName"],
-				Variables = httpRequest.Query.ContainsKey("variables") ? JsonConvert.DeserializeObject(httpRequest.Query["variables"]) : null
-			};
-		}
-
-		private GraphQLRequest ReadPostJsonRequest(HttpRequest httpRequest) {
-			using (var streamReader = new StreamReader(httpRequest.Body))
-			using (var jsonTextReader = new JsonTextReader(streamReader)) {
-				var jsonSerializer = new JsonSerializer();
-				return jsonSerializer.Deserialize<GraphQLRequest>(jsonTextReader);
-			}
-		}
-
 		private async Task WriteResponseAsync(HttpResponse httpResponse, ExecutionResult executionResult) {
 			var json = this.middlewareSettings.Writer.Write(executionResult);
 
 			httpResponse.ContentType = new MediaTypeHeaderValue("application/json").MediaType;
 
 			await httpResponse.WriteAsync(json).ConfigureAwait(false);
-		}
-
-	}
-
-	internal static class GraphQLServiceExtensions {
-
-		public static Inputs ToInputs(this JToken obj) {
-			var variables = obj.GetValue() as Dictionary<string, object> ?? new Dictionary<string, object>();
-			return new Inputs(variables);
 		}
 
 	}
