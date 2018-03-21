@@ -11,12 +11,12 @@ namespace GraphQL.Server.AspNetCore.Internal {
 			this.middlewareSettings = middlewareSettings;
 		}
 
-		public async Task WriteResponseAsync(HttpResponse httpResponse, ExecutionResult executionResult) {
+		public async Task WriteResponseAsync(HttpContext httpContext, ExecutionResult executionResult) {
 			var json = this.middlewareSettings.Writer.Write(executionResult);
 
-			httpResponse.ContentType = "application/json";
+			httpContext.Response.ContentType = "application/json";
 
-			await httpResponse.WriteAsync(json).ConfigureAwait(false);
+			await httpContext.Response.WriteAsync(json).ConfigureAwait(false);
 		}
 
 	}

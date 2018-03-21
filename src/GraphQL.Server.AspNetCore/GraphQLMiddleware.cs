@@ -1,5 +1,4 @@
 using System;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using GraphQL.Server.AspNetCore.Internal;
 using Microsoft.AspNetCore.Http;
@@ -66,16 +65,7 @@ namespace GraphQL.Server.AspNetCore {
 			});
 
 			// Write the GraphQLResponse
-			await this.graphQLHttpWriter.WriteResponseAsync(httpContext.Response, executionResult).ConfigureAwait(false);
-		}
-
-
-		private async Task WriteResponseAsync(HttpResponse httpResponse, ExecutionResult executionResult) {
-			var json = this.middlewareSettings.Writer.Write(executionResult);
-
-			httpResponse.ContentType = new MediaTypeHeaderValue("application/json").MediaType;
-
-			await httpResponse.WriteAsync(json).ConfigureAwait(false);
+			await this.graphQLHttpWriter.WriteResponseAsync(httpContext, executionResult).ConfigureAwait(false);
 		}
 
 	}

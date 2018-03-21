@@ -15,7 +15,7 @@ namespace GraphQL.Server.AspNetCore.Internal {
 		}
 
 		public GraphQLRequest ReadRequest(HttpRequest httpRequest) {
-			if (httpRequest == null) {throw new ArgumentNullException(nameof(httpRequest));}
+			if (httpRequest == null) { throw new ArgumentNullException(nameof(httpRequest)); }
 
 			if (string.Equals(httpRequest.Method, HttpMethods.Get, StringComparison.OrdinalIgnoreCase)) {
 				return this.ReadGetRequest(httpRequest);
