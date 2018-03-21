@@ -1,12 +1,20 @@
 using System;
-using Microsoft.AspNetCore.Builder;
+using GraphQL.Server.AspNetCore.Playground;
 
-namespace GraphQL.Server.AspNetCore.Playground {
+namespace Microsoft.AspNetCore.Builder {
 
 	/// <summary>
 	/// Extension methods for <see cref="PlaygroundMiddleware"/>
 	/// </summary>
 	public static class PlaygroundMiddlewareExtensions {
+
+		/// <summary>
+		/// Enables a PlaygroundServer
+		/// </summary>
+		/// <param name="applicationBuilder"></param>
+		/// <returns></returns>
+		public static IApplicationBuilder UsePlaygroundServer(this IApplicationBuilder applicationBuilder) =>
+			applicationBuilder.UsePlaygroundServer(new PlaygroundMiddlewareSettings());
 
 		/// <summary>
 		/// Enables a PlaygroundServer using the specified settings

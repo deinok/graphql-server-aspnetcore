@@ -37,11 +37,10 @@ namespace TestingWebApp {
 		public void Configure(IApplicationBuilder app, IHostingEnvironment env) {
 			app.UseResponseCompression();
 
-			app.UseGraphQLServer(new GraphQLMiddlewareSettings {
+
+			app.UseGraphQL(new GraphQLMiddlewareSettings {
 				Schema = app.ApplicationServices.GetRequiredService<ISchema>()
 			});
-			app.UseGraphiQLServer(new GraphiQLMiddlewareSettings { });
-			app.UsePlaygroundServer(new PlaygroundMiddlewareSettings { });
 
 			app.Run(async (context) => {
 				await context.Response.WriteAsync("Hello World!");

@@ -1,12 +1,20 @@
 using System;
-using Microsoft.AspNetCore.Builder;
+using GraphQL.Server.AspNetCore.GraphiQL;
 
-namespace GraphQL.Server.AspNetCore.GraphiQL {
+namespace Microsoft.AspNetCore.Builder {
 
 	/// <summary>
 	/// Extension methods for <see cref="GraphiQLMiddleware"/>
 	/// </summary>
 	public static class GraphiQLMiddlewareExtensions {
+
+		/// <summary>
+		/// Enables a GraphiQLServer using the specified settings
+		/// </summary>
+		/// <param name="applicationBuilder"></param>
+		/// <returns></returns>
+		public static IApplicationBuilder UseGraphiQLServer(this IApplicationBuilder applicationBuilder) =>
+			applicationBuilder.UseGraphiQLServer(new GraphiQLMiddlewareSettings());
 
 		/// <summary>
 		/// Enables a GraphiQLServer using the specified settings

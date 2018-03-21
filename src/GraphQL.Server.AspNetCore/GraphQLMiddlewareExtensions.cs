@@ -1,7 +1,8 @@
 using System;
+using GraphQL.Server.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 
-namespace GraphQL.Server.AspNetCore {
+namespace Microsoft.AspNetCore.Builder {
 
 	/// <summary>
 	/// Extension methods for <see cref="GraphQLMiddleware"/>
