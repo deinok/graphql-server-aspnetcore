@@ -5,6 +5,7 @@
 
 	<PropertyGroup>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<TargetFrameworks>netstandard1.3;netstandard2.0</TargetFrameworks>
 	</PropertyGroup>
 
 </Project>

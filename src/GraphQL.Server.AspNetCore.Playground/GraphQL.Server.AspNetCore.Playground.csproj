@@ -5,11 +5,10 @@
 
 	<PropertyGroup>
 		<Description>A GraphQL Playground Integration for AspNetCore</Description>
-		<TargetFrameworks>netstandard1.3;netstandard2.0</TargetFrameworks>
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Include="Internal\playground.cshtml" />
+	  <EmbeddedResource Include="Internal/playground.cshtml" />
 	</ItemGroup>
 
 	<ItemGroup>
