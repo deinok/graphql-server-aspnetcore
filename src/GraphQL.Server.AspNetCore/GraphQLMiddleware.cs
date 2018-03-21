@@ -13,6 +13,8 @@ namespace GraphQL.Server.AspNetCore {
 	public class GraphQLMiddleware : BaseMiddleware {
 
 		private readonly GraphQLMiddlewareSettings middlewareSettings;
+		private readonly GraphQLHttpReader graphQLHttpReader;
+		private readonly GraphQLHttpWriter graphQLHttpWriter;
 
 		/// <summary>
 		/// Create a new GraphQLMiddleware
@@ -23,6 +25,8 @@ namespace GraphQL.Server.AspNetCore {
 			this.middlewareSettings = middlewareSettings ?? throw new ArgumentNullException(nameof(middlewareSettings));
 			if (middlewareSettings.EndPoint == null) { throw new ArgumentNullException(nameof(middlewareSettings.EndPoint)); }
 			if (middlewareSettings.Schema == null) { throw new ArgumentNullException(nameof(middlewareSettings.Schema)); }
+			this.graphQLHttpReader = new GraphQLHttpReader(this.middlewareSettings);
+			this.graphQLHttpWriter = new GraphQLHttpWriter(this.middlewareSettings);
 		}
 
 		/// <summary>
@@ -50,19 +54,19 @@ namespace GraphQL.Server.AspNetCore {
 
 		private async Task InvokeGraphQLApi(HttpContext httpContext) {
 			// Read the GraphQLRequest
-			var request = GraphQLHttpReader.ReadRequest(httpContext.Request);
+			var graphQLRequest = this.graphQLHttpReader.ReadRequest(httpContext.Request);
 
 			// Try Execute the request
-			var result = await this.middlewareSettings.Executer.ExecuteAsync(executionOptions => {
+			var executionResult = await this.middlewareSettings.Executer.ExecuteAsync(executionOptions => {
 				executionOptions.Schema = this.middlewareSettings.Schema;
-				executionOptions.Query = request.Query;
-				executionOptions.OperationName = request.OperationName;
-				if (request.Variables != null) { executionOptions.Inputs = ((JToken)request.Variables)?.ToInputs(); }
+				executionOptions.Query = graphQLRequest.Query;
+				executionOptions.OperationName = graphQLRequest.OperationName;
+				if (graphQLRequest.Variables != null) { executionOptions.Inputs = ((JToken)graphQLRequest.Variables)?.ToInputs(); }
 				executionOptions.UserContext = this.middlewareSettings.BuildUserContext?.Invoke(httpContext);
 			});
 
 			// Write the GraphQLResponse
-			await WriteResponseAsync(httpContext.Response, result).ConfigureAwait(false);
+			await this.graphQLHttpWriter.WriteResponseAsync(httpContext.Response, executionResult).ConfigureAwait(false);
 		}
 
 
