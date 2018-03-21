@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 
 namespace GraphQL.Server.AspNetCore.Internal {
 
@@ -12,11 +13,9 @@ namespace GraphQL.Server.AspNetCore.Internal {
 		}
 
 		public async Task WriteResponseAsync(HttpContext httpContext, ExecutionResult executionResult) {
-			var json = this.middlewareSettings.Writer.Write(executionResult);
-
 			httpContext.Response.ContentType = "application/json";
-
-			await httpContext.Response.WriteAsync(json).ConfigureAwait(false);
+			var jsonResult = JsonConvert.SerializeObject(executionResult, this.middlewareSettings.JsonSerializerSettings);
+			await httpContext.Response.WriteAsync(jsonResult).ConfigureAwait(false);
 		}
 
 	}

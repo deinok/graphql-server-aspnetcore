@@ -4,6 +4,8 @@ using GraphQL.Http;
 using GraphQL.Subscription;
 using GraphQL.Types;
 using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace GraphQL.Server.AspNetCore {
 
@@ -25,6 +27,13 @@ namespace GraphQL.Server.AspNetCore {
 		public ISchema Schema { get; set; }
 
 		public IDocumentExecuter Executer { get; set; } = new DocumentExecuter();
+
+		public JsonSerializerSettings JsonSerializerSettings { get; set; } = new JsonSerializerSettings {
+			ContractResolver = new CamelCasePropertyNamesContractResolver(),
+			DateFormatHandling = DateFormatHandling.IsoDateFormat,
+			DateFormatString = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.FFFFFFF'Z'",
+			Formatting = Formatting.Indented
+		};
 
 		public IDocumentWriter Writer { get; set; } = new DocumentWriter();
 
