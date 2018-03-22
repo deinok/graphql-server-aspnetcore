@@ -37,13 +37,8 @@ namespace TestingWebApp {
 		public void Configure(IApplicationBuilder app, IHostingEnvironment env) {
 			app.UseResponseCompression();
 
-
 			app.UseGraphQL(new GraphQLMiddlewareSettings {
 				Schema = app.ApplicationServices.GetRequiredService<ISchema>()
-			});
-
-			app.Run(async (context) => {
-				await context.Response.WriteAsync("Hello World!");
 			});
 		}
 
