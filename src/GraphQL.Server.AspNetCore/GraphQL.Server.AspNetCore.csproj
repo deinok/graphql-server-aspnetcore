@@ -1,20 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="../src.props" />
+	<Import Project="../src.props" />
 
-  <PropertyGroup>
-    <Description>A GraphQL Integration for AspNetCore</Description>
-    <TargetFrameworks>netstandard1.3;netstandard2.0</TargetFrameworks>
-  </PropertyGroup>
+	<PropertyGroup>
+		<Description>A GraphQL Integration for AspNetCore</Description>
+		<TargetFramework>netstandard2.0</TargetFramework>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="GraphQL" Version="2.0.0-alpha-839" />
-    <PackageReference Include="GraphQL.Common" Version="1.0.3" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="GraphQL" Version="2.0.0-alpha-839" />
+		<PackageReference Include="GraphQL.Common" Version="1.0.3" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="1.1.2" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.1.0" />
+	</ItemGroup>
 
 </Project>

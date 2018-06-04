@@ -1,16 +1,5 @@
 version: 2
 jobs:
-  netcore1.0:
-    working_directory: ~/GraphQL.Server.AspNetCore/
-    docker:
-      - image: microsoft/dotnet:1-sdk
-    steps:
-      - checkout
-
-      # Test
-      - run: dotnet restore
-      - run: dotnet test --framework netcoreapp1.0 ./tests/GraphQL.Server.AspNetCore.Tests/GraphQL.Server.AspNetCore.Tests.csproj
-
   netcore2.0:
     working_directory: ~/GraphQL.Server.AspNetCore/
     docker:
@@ -68,9 +57,7 @@ workflows:
   version: 2
   build-test-and-deploy:
     jobs:
-      - netcore1.0
       - netcore2.0
       - deploy:
           requires:
-            - netcore1.0
             - netcore2.0
